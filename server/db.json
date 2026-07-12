@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "created_at": "2026-07-05T08:34:21.086Z",
+      "is_admin": 0,
+      "id": "b6e99e7f-2d0d-4fcb-821c-b99f3fce3125",
+      "name": "peter ig",
+      "email": "vicki@stitches.com",
+      "password_hash": "$2a$12$ocmzWGUyYYSMhu5t2OmpCe5.pgUdoiW9ljNCffh/5231mYaTeUGCS",
+      "referral_code": "PETEX9BSD",
+      "state": "Federal Capital Territory",
+      "city": "Municipal Area Council",
+      "address": "Ahmadu Bello Way, Central Business District, Municipal Area Council, Federal Capital Territory, 223140, Nigeria",
+      "lat": 9.0567,
+      "lng": 7.4969
+    }
+  ],
+  "listings": [
+    {
+      "status": "active",
+      "flagged": true,
+      "images": [],
+      "created_at": "2026-07-04T11:29:55.062Z",
+      "id": "b061069e-4292-4db3-9245-0961f4061462",
+      "user_id": "e8e063ac-bfd8-4aaa-9b3b-b8ba9a841862",
+      "type": "marketplace",
+      "title": "Chemistry textbook",
+      "description": "Slightly used organic chemistry textbook",
+      "price": 3500,
+      "category": "Books",
+      "state": "Lagos",
+      "city": "Surulere"
+    }
+  ],
+  "referrals": [
+    {
+      "status": "paid",
+      "reward_amount": 500,
+      "created_at": "2026-07-04T11:29:55.046Z",
+      "id": "d1f16849-fe82-401d-a9f2-bf379274a659",
+      "referrer_id": "2c259744-f22d-427b-8818-58f685ca5187",
+      "referred_id": "e8e063ac-bfd8-4aaa-9b3b-b8ba9a841862"
+    }
+  ],
+  "messages": [
+    {
+      "created_at": "2026-07-04T11:29:55.099Z",
+      "read_at": null,
+      "id": "abbce008-973e-4421-af96-feebdd73274f",
+      "sender_id": "2c259744-f22d-427b-8818-58f685ca5187",
+      "receiver_id": "e8e063ac-bfd8-4aaa-9b3b-b8ba9a841862",
+      "body": "Hi Alice! Is the chemistry book still available?",
+      "listing_id": "b061069e-4292-4db3-9245-0961f4061462"
+    },
+    {
+      "created_at": "2026-07-05T09:13:38.116Z",
+      "read_at": null,
+      "id": "7265a005-d5b7-4d60-ad06-e0f039629a51",
+      "sender_id": "b6e99e7f-2d0d-4fcb-821c-b99f3fce3125",
+      "receiver_id": "e8e063ac-bfd8-4aaa-9b3b-b8ba9a841862",
+      "body": "what's up",
+      "listing_id": "b061069e-4292-4db3-9245-0961f4061462"
+    }
+  ]
+}
