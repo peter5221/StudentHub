@@ -16,6 +16,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Verify deploy secrets
+        run: |
+          if [ -z "${{ secrets.DEPLOY_HOST }}" ]; then
+            echo "::error ::DEPLOY_HOST secret is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_USER }}" ]; then
+            echo "::error ::DEPLOY_USER secret is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_SSH_KEY }}" ]; then
+            echo "::error ::DEPLOY_SSH_KEY secret is missing"
+            exit 1
+          fi
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -42,6 +57,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Verify deploy secrets
+        run: |
+          if [ -z "${{ secrets.DEPLOY_HOST }}" ]; then
+            echo "::error ::DEPLOY_HOST secret is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_USER }}" ]; then
+            echo "::error ::DEPLOY_USER secret is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_SSH_KEY }}" ]; then
+            echo "::error ::DEPLOY_SSH_KEY secret is missing"
+            exit 1
+          fi
 
       - name: Set lowercase image names
         run: |
@@ -88,6 +118,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Verify deploy secrets
+        run: |
+          if [ -z "${{ secrets.DEPLOY_HOST }}" ]; then
+            echo "::error ::DEPLOY_HOST secret is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_USER }}" ]; then
+            echo "::error ::DEPLOY_USER secret is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_SSH_KEY }}" ]; then
+            echo "::error ::DEPLOY_SSH_KEY secret is missing"
+            exit 1
+          fi
 
       - name: Deploy to server via SSH
         uses: appleboy/ssh-action@v1
