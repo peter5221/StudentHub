@@ -1,13 +1,70 @@
 {
   "users": [
     {
-      "created_at": "2026-07-05T08:34:21.086Z",
+      "created_at": "2026-10-16T15:24:06.926Z",
+      "is_admin": 1,
+      "id": "ef79f114-71d4-49a6-a4f4-ccf38c148a2e",
+      "name": "Peter Ignatius",
+      "email": "peterignatius17@gmail.com",
+      "password_hash": "$2a$12$0d2T7IcxiaVob5s0l0hAveFavBlDC3/wwd6hR3ljkFlmP5ALORnFi",
+      "referral_code": "PETEYG0VR",
+      "state": "Federal Capital Territory",
+      "city": "Municipal Area Council",
+      "address": "Ahmadu Bello Way, Central Business District, Municipal Area Council, Federal Capital Territory, 223140, Nigeria",
+      "lat": 9.0567,
+      "lng": 7.4969
+    },
+    {
+      "created_at": "2026-11-12T11:23:26.069Z",
       "is_admin": 0,
-      "id": "b6e99e7f-2d0d-4fcb-821c-b99f3fce3125",
-      "name": "peter ig",
+      "id": "17125eba-9dd2-4147-bd62-54f58a049b7a",
+      "name": "vick",
       "email": "vicki@stitches.com",
-      "password_hash": "$2a$12$ocmzWGUyYYSMhu5t2OmpCe5.pgUdoiW9ljNCffh/5231mYaTeUGCS",
-      "referral_code": "PETEX9BSD",
+      "password_hash": "$2a$12$aR1nvVauto2hHrt/w8KlLeko5Y0vRKBQzndpGP5Z.jfMUqPYLLIbi",
+      "referral_code": "VICKZ9M4Z",
+      "state": "Nasarawa",
+      "city": "Keffi",
+      "address": "Keffi, Nasarawa, Nigeria",
+      "lat": 8.841683399975155,
+      "lng": 7.906633179396031
+    },
+    {
+      "created_at": "2026-11-13T11:33:22.209Z",
+      "is_admin": 0,
+      "id": "11e55e41-cc92-46e7-b6a0-f9020d098ee9",
+      "name": "Segun Afolarin",
+      "email": "afolarin@gmail.com",
+      "password_hash": "$2a$12$NO5co.8qYeRfif5nNp5LiujY8.PTSENmhZi7/r7FlQCOO.G2IZWsm",
+      "referral_code": "SEGULMVKX",
+      "state": "Nasarawa",
+      "city": "Keffi",
+      "address": "Keffi, Nasarawa, Nigeria",
+      "lat": 8.842241,
+      "lng": 7.904827,
+      "banned": 0
+    },
+    {
+      "created_at": "2026-11-13T13:12:07.121Z",
+      "is_admin": 0,
+      "id": "9730779f-4e9c-4d86-a6df-8cedf59e7c7e",
+      "name": "peter ig",
+      "email": "chinonsopeter035@gmail.com",
+      "password_hash": "$2a$12$q96cJasdZV0vtD.p7ZpQ6Om4wByIlcjLhKyiBTIlFRBWF.VRrVt5S",
+      "referral_code": "PETERKC6H",
+      "state": "Nasarawa",
+      "city": "Keffi",
+      "address": "Keffi, Nasarawa, Nigeria",
+      "lat": 8.84159231460747,
+      "lng": 7.9073360907253925
+    },
+    {
+      "created_at": "2026-11-16T23:45:59.468Z",
+      "is_admin": 0,
+      "id": "395b3462-dd21-49e1-8f88-9d1ca8d3cc1d",
+      "name": "Segun Afolarin11",
+      "email": "afolarinyt@gmail.com",
+      "password_hash": "$2a$12$rQ9sX0NHutXDX.Bhai6zZujBdp9d5UQuugIItS.drMLwRrsgVc0T2",
+      "referral_code": "SEGU9QBFD",
       "state": "Federal Capital Territory",
       "city": "Municipal Area Council",
       "address": "Ahmadu Bello Way, Central Business District, Municipal Area Council, Federal Capital Territory, 223140, Nigeria",
@@ -18,48 +75,56 @@
   "listings": [
     {
       "status": "active",
-      "flagged": true,
-      "images": [],
-      "created_at": "2026-07-04T11:29:55.062Z",
-      "id": "b061069e-4292-4db3-9245-0961f4061462",
-      "user_id": "e8e063ac-bfd8-4aaa-9b3b-b8ba9a841862",
+      "flagged": false,
+      "images": [
+        "/uploads/1794575911376-wa0m3i55e.png"
+      ],
+      "created_at": "2026-11-13T13:18:31.431Z",
+      "id": "cde913ff-4848-4026-a4e6-8e62899bd5f8",
+      "user_id": "ef79f114-71d4-49a6-a4f4-ccf38c148a2e",
       "type": "marketplace",
-      "title": "Chemistry textbook",
-      "description": "Slightly used organic chemistry textbook",
-      "price": 3500,
+      "title": "jhlkhjb",
+      "description": ";lk'l/",
+      "price": 122345,
       "category": "Books",
-      "state": "Lagos",
-      "city": "Surulere"
+      "condition": "Like New",
+      "bedrooms": null,
+      "bathrooms": null,
+      "availability_date": null,
+      "property_type": null,
+      "state": "Nasarawa",
+      "city": "Keffi",
+      "address": "Keffi, Nasarawa, Nigeria"
     }
   ],
-  "referrals": [
-    {
-      "status": "paid",
-      "reward_amount": 500,
-      "created_at": "2026-07-04T11:29:55.046Z",
-      "id": "d1f16849-fe82-401d-a9f2-bf379274a659",
-      "referrer_id": "2c259744-f22d-427b-8818-58f685ca5187",
-      "referred_id": "e8e063ac-bfd8-4aaa-9b3b-b8ba9a841862"
-    }
-  ],
+  "referrals": [],
   "messages": [
     {
-      "created_at": "2026-07-04T11:29:55.099Z",
-      "read_at": null,
-      "id": "abbce008-973e-4421-af96-feebdd73274f",
-      "sender_id": "2c259744-f22d-427b-8818-58f685ca5187",
-      "receiver_id": "e8e063ac-bfd8-4aaa-9b3b-b8ba9a841862",
-      "body": "Hi Alice! Is the chemistry book still available?",
-      "listing_id": "b061069e-4292-4db3-9245-0961f4061462"
+      "created_at": "2026-11-13T13:19:18.704Z",
+      "read_at": "2026-11-13T13:21:55.798Z",
+      "id": "2bb99c01-b5ec-430c-88a6-c8e2191388d0",
+      "sender_id": "17125eba-9dd2-4147-bd62-54f58a049b7a",
+      "receiver_id": "ef79f114-71d4-49a6-a4f4-ccf38c148a2e",
+      "body": "hi",
+      "listing_id": "cde913ff-4848-4026-a4e6-8e62899bd5f8"
     },
     {
-      "created_at": "2026-07-05T09:13:38.116Z",
+      "created_at": "2026-11-16T18:16:43.771Z",
       "read_at": null,
-      "id": "7265a005-d5b7-4d60-ad06-e0f039629a51",
-      "sender_id": "b6e99e7f-2d0d-4fcb-821c-b99f3fce3125",
-      "receiver_id": "e8e063ac-bfd8-4aaa-9b3b-b8ba9a841862",
-      "body": "what's up",
-      "listing_id": "b061069e-4292-4db3-9245-0961f4061462"
+      "id": "7c4363c5-2728-4b84-b28f-4104b300c32e",
+      "sender_id": "17125eba-9dd2-4147-bd62-54f58a049b7a",
+      "receiver_id": "ef79f114-71d4-49a6-a4f4-ccf38c148a2e",
+      "body": "hi",
+      "listing_id": "cde913ff-4848-4026-a4e6-8e62899bd5f8"
+    },
+    {
+      "created_at": "2026-11-16T18:19:45.298Z",
+      "read_at": null,
+      "id": "dece455d-cf01-4992-a530-e466729acf91",
+      "sender_id": "17125eba-9dd2-4147-bd62-54f58a049b7a",
+      "receiver_id": "ef79f114-71d4-49a6-a4f4-ccf38c148a2e",
+      "body": "hello",
+      "listing_id": "cde913ff-4848-4026-a4e6-8e62899bd5f8"
     }
   ]
 }

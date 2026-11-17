@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
-import { GraduationCap, Eye, EyeOff, MapPin, Loader } from 'lucide-react';
+import { GraduationCap, Eye, EyeOff, MapPin, Loader, ArrowLeft } from 'lucide-react';
 
 export default function LoginSignup({ mode = 'login' }) {
   const { login, signup } = useAuth();
@@ -30,12 +30,17 @@ export default function LoginSignup({ mode = 'login' }) {
     }
     setLoading(true);
     try {
+      let loggedInUser = null;
       if (isLogin) {
-        await login(form.email, form.password);
+        loggedInUser = await login(form.email, form.password);
       } else {
-        await signup(form);
+        loggedInUser = await signup(form);
       }
-      navigate('/');
+      if (loggedInUser?.is_admin) {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       setError(err.response?.data?.error || 'Something went wrong. Try again.');
     } finally {
@@ -57,13 +62,21 @@ export default function LoginSignup({ mode = 'login' }) {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md"
       >
+        {/* Back to landing */}
+        <div className="mb-5">
+          <Link to="/landing" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-brand-600 transition-colors">
+            <ArrowLeft size={15} />
+            Back to home
+          </Link>
+        </div>
+
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-400 to-purple-500 flex items-center justify-center mx-auto mb-4 shadow-2xl shadow-brand-500/30">
             <GraduationCap size={32} className="text-white" />
           </div>
           <h1 className="font-display font-bold text-3xl gradient-text">StudentHub</h1>
-          <p className="text-slate-400 text-sm mt-1">Campus Marketplace & Rentals Platform</p>
+          <p className="text-slate-400 text-sm mt-1">Campus Marketplace &amp; Rentals Platform</p>
         </div>
 
         <div className="glass-card p-8">
@@ -71,17 +84,15 @@ export default function LoginSignup({ mode = 'login' }) {
           <div className="flex gap-1 p-1 bg-surface-2 rounded-xl mb-6">
             <button
               onClick={() => setIsLogin(true)}
-              className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200 ${
-                isLogin ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30' : 'text-slate-400 hover:text-slate-200'
-              }`}
+              className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200 ${isLogin ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30' : 'text-slate-400 hover:text-slate-200'
+                }`}
             >
               Login
             </button>
             <button
               onClick={() => setIsLogin(false)}
-              className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200 ${
-                !isLogin ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30' : 'text-slate-400 hover:text-slate-200'
-              }`}
+              className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200 ${!isLogin ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30' : 'text-slate-400 hover:text-slate-200'
+                }`}
             >
               Sign Up
             </button>
@@ -175,9 +186,9 @@ export default function LoginSignup({ mode = 'login' }) {
 
         <p className="text-center text-xs text-slate-500 mt-6">
           By signing up you agree to our{' '}
-          <span className="text-brand-400 cursor-pointer hover:underline">Terms of Service</span>
+          <Link to="/terms" className="text-brand-400 hover:underline">Terms &amp; Conditions</Link>
           {' '}and{' '}
-          <span className="text-brand-400 cursor-pointer hover:underline">Privacy Policy</span>
+          <Link to="/privacy" className="text-brand-400 hover:underline">Privacy Policy</Link>.
         </p>
       </motion.div>
     </div>

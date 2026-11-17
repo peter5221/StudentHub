@@ -72,7 +72,14 @@ router.post('/login', async (req, res) => {
     const valid = await bcrypt.compare(password, user.password_hash);
     if (!valid) return res.status(401).json({ error: 'Invalid credentials' });
 
-    return res.json({ token: signToken(user), user: sanitizeUser(user) });
+    // Auto-promote admin on first login if not already flagged
+    let currentUser = user;
+    if (user.email.toLowerCase() === (process.env.ADMIN_EMAIL || '').toLowerCase() && !user.is_admin) {
+      Users.update(user.id, { is_admin: 1 });
+      currentUser = Users.findById(user.id);
+    }
+
+    return res.json({ token: signToken(currentUser), user: sanitizeUser(currentUser) });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: 'Login failed' });

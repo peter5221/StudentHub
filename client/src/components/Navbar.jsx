@@ -45,11 +45,10 @@ export default function Navbar() {
                   <Link
                     key={to}
                     to={to}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
-                      active
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${active
                         ? 'bg-brand-500/20 text-brand-300'
                         : 'text-slate-400 hover:text-slate-100 hover:bg-white/6'
-                    }`}
+                      }`}
                   >
                     <Icon size={16} />
                     {label}
@@ -59,14 +58,13 @@ export default function Navbar() {
               {user.is_admin ? (
                 <Link
                   to="/admin"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
-                    location.pathname === '/admin'
-                      ? 'bg-amber-500/20 text-amber-300'
-                      : 'text-slate-400 hover:text-amber-300 hover:bg-amber-500/10'
-                  }`}
+                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-sm font-semibold transition-all duration-150 ${location.pathname === '/admin'
+                      ? 'bg-brand-50 text-brand-700 border border-brand-200 shadow-sm'
+                      : 'text-brand-600 hover:text-brand-700 hover:bg-brand-50/80 border border-transparent'
+                    }`}
                 >
-                  <ShieldCheck size={16} />
-                  Admin
+                  <ShieldCheck size={16} className="text-brand-600" />
+                  Admin Dashboard
                 </Link>
               ) : null}
             </nav>
@@ -93,6 +91,7 @@ export default function Navbar() {
               </>
             ) : (
               <div className="flex items-center gap-2">
+                <Link to="/landing" className="btn-ghost py-2 px-3 text-sm hidden md:inline-flex">About</Link>
                 <Link to="/login" className="btn-secondary py-2 px-4 text-sm">Login</Link>
                 <Link to="/signup" className="btn-primary py-2 px-4 text-sm">Sign Up</Link>
               </div>

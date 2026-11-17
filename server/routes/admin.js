@@ -1,5 +1,6 @@
 import express from 'express';
-import { Users, Listings, Referrals, getRecentActivity } from '../database.js';
+import bcrypt from 'bcryptjs';
+import db, { Users, Listings, Referrals, getRecentActivity, genId } from '../database.js';
 import { requireAdmin } from '../middleware/auth.js';
 
 const router = express.Router();
@@ -39,6 +40,35 @@ router.get('/users', requireAdmin, (req, res) => {
 router.delete('/users/:id', requireAdmin, (req, res) => {
   Users.delete(req.params.id);
   return res.json({ success: true });
+});
+
+// POST /api/admin/users  — admin creates a new user
+router.post('/users', requireAdmin, async (req, res) => {
+  try {
+    const { name, email, password, state, city } = req.body;
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: 'Name, email and password are required' });
+    }
+    if (Users.findByEmail(email)) {
+      return res.status(409).json({ error: 'Email already in use' });
+    }
+
+    const password_hash = await bcrypt.hash(password, 12);
+    const id = genId();
+    const user = Users.create({
+      id, name, email, password_hash,
+      referral_code: name.replace(/\s+/g, '').toUpperCase().slice(0, 4) + Math.random().toString(36).substring(2, 7).toUpperCase(),
+      state: state || null,
+      city: city || null,
+      is_admin: req.body.is_admin ? 1 : 0,
+    });
+
+    const { password_hash: _, ...safe } = user;
+    return res.status(201).json({ user: safe });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Failed to create user' });
+  }
 });
 
 // PATCH /api/admin/users/:id/promote  — toggle admin status
@@ -91,6 +121,45 @@ router.get('/referrals', requireAdmin, (req, res) => {
 router.patch('/referrals/:id/payout', requireAdmin, (req, res) => {
   Referrals.markPaid(req.params.id);
   return res.json({ success: true });
+});
+
+// ─── Danger Zone Actions ───────────────────────────────────────────────────────
+// POST /api/admin/danger/delete-flagged
+router.post('/danger/delete-flagged', requireAdmin, (req, res) => {
+  const countBefore = db.data.listings.length;
+  db.data.listings = db.data.listings.filter(l => !l.flagged);
+  const deleted = countBefore - db.data.listings.length;
+  db.write();
+  return res.json({ success: true, message: `Deleted ${deleted} flagged listing(s)` });
+});
+
+// POST /api/admin/danger/delete-all-listings
+router.post('/danger/delete-all-listings', requireAdmin, (req, res) => {
+  const deleted = db.data.listings.length;
+  db.data.listings = [];
+  db.write();
+  return res.json({ success: true, message: `Cleared all ${deleted} listings` });
+});
+
+// POST /api/admin/danger/delete-banned-users
+router.post('/danger/delete-banned-users', requireAdmin, (req, res) => {
+  const bannedIds = new Set(db.data.users.filter(u => u.banned).map(u => u.id));
+  db.data.users = db.data.users.filter(u => !u.banned);
+  db.data.listings = db.data.listings.filter(l => !bannedIds.has(l.user_id));
+  db.write();
+  return res.json({ success: true, message: `Purged ${bannedIds.size} banned account(s)` });
+});
+
+// POST /api/admin/danger/reset-database
+router.post('/danger/reset-database', requireAdmin, (req, res) => {
+  const adminEmail = (process.env.ADMIN_EMAIL || '').toLowerCase();
+  // Preserve admins
+  db.data.users = db.data.users.filter(u => u.is_admin === 1 || u.email?.toLowerCase() === adminEmail);
+  db.data.listings = [];
+  db.data.referrals = [];
+  db.data.messages = [];
+  db.write();
+  return res.json({ success: true, message: 'Database reset successfully. Admin accounts preserved.' });
 });
 
 export default router;

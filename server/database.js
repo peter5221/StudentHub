@@ -31,7 +31,7 @@ export const Users = {
 
   findById: (id) => db.data.users.find(u => u.id === id),
 
-  findByEmail: (email) => db.data.users.find(u => u.email === email),
+  findByEmail: (email) => db.data.users.find(u => u.email?.toLowerCase() === email?.toLowerCase()),
 
   findByReferralCode: (code) => db.data.users.find(u => u.referral_code === code),
 

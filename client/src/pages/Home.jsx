@@ -8,9 +8,9 @@ import { Search, ShoppingBag, Home as HomeIcon, Trees, SlidersHorizontal, X, Plu
 import { Link, useNavigate } from 'react-router-dom';
 
 const CATEGORIES = {
-  marketplace: ['Electronics', 'Books', 'Clothing', 'Furniture', 'Appliances', 'Sports', 'Other'],
-  rental: ['Apartment', 'Room', 'Studio', 'House', 'Hostel'],
-  property: ['Land', 'House', 'Plot', 'Commercial'],
+  marketplace: ['Electronics', 'Car', 'Books', 'Clothing', 'Furniture', 'Appliances', 'Sports', 'Other'],
+  rental: ['Apartment', 'Room', 'Studio', 'Car', 'House', 'Hostel'],
+  property: ['Land', 'House', 'Plot', 'Car', 'Commercial'],
 };
 
 const TABS = [
@@ -162,11 +162,10 @@ export default function Home() {
           <button
             key={id}
             onClick={() => setActiveTab(id)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 transition-all duration-200 ${
-              activeTab === id
-                ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30'
-                : 'bg-white/6 text-slate-400 border border-white/10 hover:bg-white/10 hover:text-slate-200'
-            }`}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 transition-all duration-200 ${activeTab === id
+              ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30'
+              : 'bg-white/6 text-slate-400 border border-white/10 hover:bg-white/10 hover:text-slate-200'
+              }`}
           >
             {Icon && <Icon size={14} />}
             {label}
